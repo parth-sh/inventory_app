@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Inventory</string>
+    <string name="category_overview">Overview</string>
+    <string name="hint_item_name">Name</string>
+    <string name="hint_item_description">Description</string>
+    <string name="category_count">Measurement</string>
+    <string name="hint_item_count">Count</string>
 </resources>

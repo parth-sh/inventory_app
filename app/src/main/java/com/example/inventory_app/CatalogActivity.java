@@ -3,6 +3,7 @@ package com.example.inventory_app;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -20,7 +21,9 @@ public class CatalogActivity extends AppCompatActivity {
             if(result.getContents() == null) {
                 Toast.makeText(CatalogActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(CatalogActivity.this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+                intent.putExtra("SCANNED_CODE",result.getContents());
+                startActivity(intent);
             }
     });
 

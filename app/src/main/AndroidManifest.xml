@@ -2,17 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.inventory_app">
 
-    <!--Hardware acceleration is required since TextureView is used. zxing-->
-
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Inventory_app"
-        android:hardwareAccelerated="true"
-        >
+        android:theme="@style/Theme.Inventory_app">
+        <activity
+            android:name=".EditorActivity"
+            android:label="Edit"
+            android:parentActivityName=".CatalogActivity"
+            android:exported="false" />
         <activity
             android:name=".CatalogActivity"
             android:exported="true">
