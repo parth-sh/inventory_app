@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -19,7 +20,8 @@ public class CatalogActivity extends AppCompatActivity {
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
         result -> {
             if(result.getContents() == null) {
-                Toast.makeText(CatalogActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.floatingActionButton_scan), "Cancelled", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             } else {
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
                 intent.putExtra("SCANNED_CODE",result.getContents());
@@ -37,7 +39,7 @@ public class CatalogActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 barcodeLauncher.launch(new ScanOptions()
-//                        .setDesiredBarcodeFormats(ScanOptions.ONE_D_CODE_TYPES)
+                        .setDesiredBarcodeFormats(ScanOptions.ONE_D_CODE_TYPES)
                         .setPrompt("Scan a barcode")
                         .setCameraId(0)
                         .setBeepEnabled(false)
